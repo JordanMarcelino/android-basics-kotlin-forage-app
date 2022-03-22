@@ -30,18 +30,18 @@ import com.example.forage.model.Forageable
     version = 1,
     exportSchema = false
 )
-abstract class ForageDatabase : RoomDatabase(){
+abstract class ForageDatabase : RoomDatabase() {
 
-    abstract val forageableDao : ForageableDao
+    abstract val forageableDao: ForageableDao
 
-    companion object{
+    companion object {
         @Volatile
-        private var INSTANCE : ForageDatabase? = null
+        private var INSTANCE: ForageDatabase? = null
 
-        fun getInstance(context : Context):ForageDatabase{
-            synchronized(this){
+        fun getDatabase(context: Context): ForageDatabase {
+            synchronized(this) {
                 var instance = INSTANCE
-                if(instance == null){
+                if (instance == null) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         ForageDatabase::class.java,

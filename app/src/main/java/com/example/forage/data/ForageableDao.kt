@@ -29,13 +29,13 @@ interface ForageableDao {
     fun getForageable() : Flow<List<Forageable>>
 
     @Query("SELECT * FROM forageable_table WHERE id = :id")
-    fun getForageable(id : Int)
+    fun getForageable(id : Long) : Flow<Forageable>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(forageable: Forageable)
 
     @Update
-    suspend fun upadate(forageable: Forageable)
+    suspend fun update(forageable: Forageable)
 
     @Delete
     suspend fun delete(forageable: Forageable)
